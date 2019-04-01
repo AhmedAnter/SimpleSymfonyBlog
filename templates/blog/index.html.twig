@@ -6,36 +6,18 @@
 
     <section class="articles">
 
-        <article>
-            <h2>article title</h2>
-            <div class="metadata">Written on 01/04/2019 at 23:00 in the category Politics</div>
-            <div class="content">
-                <img src="http://placehold.it/350x0150" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente cupiditate ex aspernatur impedit tenetur similique?</p>
-                <p>Nisi quibusdam voluptatem cum quidem reiciendis praesentium cupiditate. Non voluptatibus nostrum repellendus pariatur, quasi nihil!</p>
-                <a href="{{ path('blog_show') }}" class="btn btn-primary">Read more</a>
-            </div>
-        </article>
-        <article>
-            <h2>article title</h2>
-            <div class="metadata">Written on 01/04/2019 at 23:00 in the category Politics</div>
-            <div class="content">
-                <img src="http://placehold.it/350x0150" alt="">
-                <p>Veritatis eaque fugiat voluptate alias sed nihil non, voluptatum molestiae ducimus itaque, pariatur totam voluptatem?</p>
-                <p>Rem hic minus dolorem similique, quas ut, ratione, earum fuga voluptate asperiores commodi omnis sint?</p>
-                <a href="{{ path('blog_show') }}" class="btn btn-primary">Read more</a>
-            </div>
-        </article>
-        <article>
-            <h2>article title</h2>
-            <div class="metadata">Written on 01/04/2019 at 23:00 in the category Politics</div>
-            <div class="content">
-                <img src="http://placehold.it/350x0150" alt="">
-                <p>Itaque saepe, iste fugiat veniam, rerum nulla dicta natus deleniti nobis officia, doloribus magnam aliquid.</p>
-                <p>Incidunt officia tenetur veritatis, reprehenderit, distinctio dolorem corporis eum itaque temporibus, assumenda harum ea! Omnis.</p>
-                <a href="{{ path('blog_show') }}" class="btn btn-primary">Read more</a>
-            </div>
-        </article>
+        {% for article in articles %}
+            <article>
+                <h2>{{ article.title }}</h2>
+                <div class="metadata">Written on {{ article.createdAt | date('d/m/Y') }} at {{ article.createdAt | date('H:i') }} in the category Politics</div>
+                <div class="content">
+                    <img src="{{ article.image }}" alt="">
+                    {{ article.content | raw }}
+                    <a href="{{ path('blog_show', {'id': article.id}) }}" class="btn btn-primary">Read more</a>
+                </div>
+            </article>
+        {% endfor %}
+
     </section>
 
 {% endblock %}
