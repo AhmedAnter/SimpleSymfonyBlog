@@ -5,7 +5,7 @@
 {% block body %}
 
     <section class="articles">
-
+        {# Loop over each article in the passed variable 'articles' and display it #}
         {% for article in articles %}
             <article>
                 <h2>{{ article.title }}</h2>

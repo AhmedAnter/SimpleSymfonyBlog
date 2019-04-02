@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * The Article Entity
+ * 
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  */
 class Article

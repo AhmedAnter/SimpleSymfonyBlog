@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {# Display the specified article and its properties values #}
     <article>
         <h2>{{ article.title }}</h2>
         <div class="metadata">Written on {{ article.createdAt | date('d/m/Y') }} at {{ article.createdAt | date('H:i') }} in the category Politics</div>

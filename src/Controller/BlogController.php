@@ -9,6 +9,8 @@ use App\Entity\Article;
 class BlogController extends AbstractController
 {
     /**
+     * Get All Articles
+     *
      * @Route("/blog", name="blog")
      */
     public function index()
@@ -23,6 +25,8 @@ class BlogController extends AbstractController
     }
 
     /**
+     * Show Home page
+     *
      * @Route("/", name="home")
      */
     public function home()
@@ -33,6 +37,8 @@ class BlogController extends AbstractController
     }
 
     /**
+     * Get Specific Article
+     *
      * @Route("/blog/{id}", name="blog_show")
      */
     public function show($id)
