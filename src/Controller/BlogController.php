@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Repository\ArticleRepository;
 use App\Entity\Article;
+use App\Form\ArticleType;
 
 class BlogController extends AbstractController
 {
@@ -44,18 +45,14 @@ class BlogController extends AbstractController
      * @Route("/blog/new", name="blog_create")
      * @Route("/blog/{id}/edit", name="blog_edit")
      */
-    public function create(Article $article = null, Request $request, ObjectManager $manager)
+    public function formArticle(Article $article = null, Request $request, ObjectManager $manager)
     {
         if(!$article)
             $article = new Article();
 
         // $article->setTitle('title')->setContent('content');
 
-        $form = $this->createFormBuilder($article)
-                     ->add('title')
-                     ->add('content')
-                     ->add('image')
-                     ->getForm();
+        $form = $this->createForm(ArticleType::class, $article);
 
         $form->handleRequest($request);
 
