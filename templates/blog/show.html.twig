@@ -4,7 +4,8 @@
     {# Display the specified article and its properties values #}
     <article>
         <h2>{{ article.title }}</h2>
-        <div class="metadata">Written on {{ article.createdAt | date('d/m/Y') }} at {{ article.createdAt | date('H:i') }} in the category Politics</div>
+        <div class="metadata">Written on {{ article.createdAt | date('d/m/Y') }} at {{ article.createdAt | date('H:i') }}
+         in the category {{ article.category.title }}</div>
         <div class="content">
             <img src="{{ article.image }}" alt="">
             {{ article.content | raw }}
@@ -12,4 +13,19 @@
 
         </div>
     </article>
+
+    <section id="commentaires">
+        {% for comment in article.comments %}
+            <div class="comment">
+                <div class="row">
+                    <div class="col-3">
+                        {{ comment.author }} (<small>{{ comment.createdAt| date('d/m/Y a H:i') }}</small>)
+                    </div>
+                    <div class="col">
+                        {{ comment.content | raw }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
 {% endblock %}
