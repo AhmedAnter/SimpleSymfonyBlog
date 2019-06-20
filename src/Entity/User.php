@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -28,9 +29,13 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="8")
      */
     private $password;
 
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="This value should be equal to the password")
+     */
     public $confirm_password;
 
     public function getId(): ?int
