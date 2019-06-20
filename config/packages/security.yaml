@@ -23,6 +23,10 @@ security:
                 login_path: login
                 check_path: login
 
+            logout:
+                path: logout
+                target: blog
+
             # activate different ways to authenticate
 
             # http_basic: true
