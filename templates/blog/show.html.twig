@@ -29,10 +29,15 @@
             </div>
         {% endfor %}
         
-        {{ form_start(commentForm) }}
-        {{ form_row(commentForm.author, {'attr': 'placeholder': 'Your name'}) }}
-        {{ form_row(commentForm.content, {'attr': 'placeholder': 'Your comment'}) }}
-        <button type="submit" class="btn btn-success">Comment</button>
-        {{ form_end(commentForm) }}
+        {% if app.user %}
+            {{ form_start(commentForm) }}
+            {{ form_row(commentForm.author, {'attr': {'placeholder': 'Your name'}}) }}
+            {{ form_row(commentForm.content, {'attr': {'placeholder': 'Your comment'}}) }}
+            <button type="submit" class="btn btn-success">Comment</button>
+            {{ form_end(commentForm) }}
+        {% else %}
+            <h2>You can not comment if you are not logged in!</h2>
+            <a class="btn btn-primary" href="{{ path('login') }}">Login</a>
+        {% endif %}
     </section>
 {% endblock %}
